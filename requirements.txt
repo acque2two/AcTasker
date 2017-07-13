@@ -2,3 +2,4 @@ flask-restful
 flask
 flask_sqlalchemy
 gevent
+mongoengine

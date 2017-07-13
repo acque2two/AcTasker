@@ -8,7 +8,7 @@ api = Api(rest)
 
 
 
-class HelloWorld(Resource):
+class User(Resource):
     def get(self):
         pass
 

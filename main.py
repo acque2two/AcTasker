@@ -1,9 +1,6 @@
 import traceback
-import os
-from socket import gethostname
 
 from flask import Flask, g, jsonify as flask_jsonify, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from gevent import monkey, signal
 from gevent.pywsgi import WSGIServer
 
@@ -12,6 +9,7 @@ from config import CONFIG
 monkey.patch_all()
 
 app = Flask(__name__)
+from AcTasker.db.db import db
 
 app.config.from_object('config.CONFIG.FLASK.' + 'DEVELOPMENT' if CONFIG.DEV else "PRODUCTION")
 
@@ -56,21 +54,6 @@ if __name__ == '__main__':
     @app.route('/healthz')
     def healthz():
         return "OK"
-
-
-    @app.route('/server/state')
-    def server_state():
-        st = os.statvfs('/')
-        return flask_jsonify({
-            'loadavg':  os.getloadavg(),
-            'hostname': gethostname(),
-            'inode':    {
-                'used':       ((st.f_blocks - st.f_bfree) * st.f_frsize) / 1024,
-                'free':       (st.f_bavail * st.f_frsize) / 1024,
-                'total':      (st.f_blocks * st.f_frsize) / 1024,
-                'percentage': (((st.f_blocks - st.f_bfree) * st.f_frsize) / 1024) / ((st.f_blocks * st.f_frsize) / 1024)
-            }
-        })
 
 
     print("SERVER START...")
