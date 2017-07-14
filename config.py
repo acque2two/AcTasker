@@ -2,7 +2,15 @@ import os
 
 
 class CONFIG:
+    class MODE_LIST:
+        class WEB:
+            pass
+
+        class REST:
+            pass
+
     DEV = (os.environ.get('DEBUG') == 'ENABLE')
+    MODE = MODE_LIST.WEB
 
     class DB:
 
@@ -31,7 +39,8 @@ class CONFIG:
             hostname = ''
             database = 'actasker'
 
-            settings = {"unix_socket": '/cloudsql/' + os.environ.get('DB_PATH') if os.environ.get('DB_PATH') is not None else "",
+            settings = {"unix_socket": '/cloudsql/' + os.environ.get('DB_PATH') if os.environ.get(
+                'DB_PATH') is not None else "",
                         "charset":     'utf8mb4'}
 
             def generate_uri(schema, username, password, hostname, database, settings):

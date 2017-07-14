@@ -1,0 +1,42 @@
+<html >
+
+<head >
+  <meta charset="utf-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css"
+        rel="stylesheet"
+        type="text/css" >
+  <link href="http://v4.pingendo.com/assets/bootstrap/themes/purple.css" rel="stylesheet" type="text/css" >
+
+</head >
+
+<body >
+<nav class="bg-faded bg-success navbar navbar-fixed-top navbar-full navbar-light" >
+  <a class="navbar-brand text-inverse" href="#" >AcTasker</a >
+  <ul class="nav navbar-nav pull-right" >
+
+
+    <li class="nav-item" >
+      <a class="nav-link" href="#" >
+        {% if is_login is False %}
+        Login
+        {% else %}
+        Logout
+        {% endif %}
+        <br ></a >
+    </li >
+  </ul >
+</nav >
+<div style="margin-top: 52px" >
+  {% block body %}
+  {% endblock %}
+</div >
+
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script >
+<script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js" ></script >
+
+
+</body >
+
+</html >
