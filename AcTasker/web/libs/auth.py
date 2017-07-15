@@ -4,7 +4,7 @@
 import hashlib
 from functools import wraps
 
-from flask import session, redirect
+from flask import session, redirect, g
 
 from AcTasker.db.schema.users.user import User
 
