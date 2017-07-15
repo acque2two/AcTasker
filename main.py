@@ -1,30 +1,14 @@
-import traceback
-
 from flask import Flask, jsonify
-from gevent import monkey, signal
 
 from config import CONFIG
 
-monkey.patch_all()
+# monkey.patch_all()
 
 app = Flask(__name__)
 
 app.config.from_object('config.CONFIG.FLASK.' + 'DEVELOPMENT' if CONFIG.DEV else "PRODUCTION")
 
 if __name__ == '__main__':
-
-    def got_signal(signum, frame):
-        print("[!!SIGNAL!!]")
-        traceback.print_stack()
-        print(frame)
-        import time
-        time.sleep(2)
-        exit()
-
-
-    signal.signal(signal.SIGTERM, got_signal)
-
-
 
 
     @app.route('/check', methods=["GET"])

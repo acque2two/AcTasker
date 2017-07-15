@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-web_root = Blueprint("web_root", __name__, template_folder="AcTasker/web/templates")
+web_root = Blueprint("web_root", __name__, template_folder="templates")
 
 
 @web_root.route("/")
