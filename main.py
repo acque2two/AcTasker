@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
 from flask import Flask, jsonify
 
 from config import CONFIG
@@ -16,7 +20,6 @@ if __name__ == '__main__':
         return jsonify({"status": "ok"})
 
 
-
     print("SERVER START...")
 
     if CONFIG.MODE == CONFIG.MODE_LIST.WEB:
@@ -27,6 +30,7 @@ if __name__ == '__main__':
         print("Only supported WEB Mode")
         exit(-1)
 
+    # 肉ご飯
     app.run(host='0.0.0.0', port=29580)
     #
     # http_server = WSGIServer(('', app.config['PORT']), app,
