@@ -62,7 +62,7 @@ develop-eggs/
 downloads/
 eggs/
 .eggs/
-lib/
+AcTasker/web/libs/
 lib64/
 parts/
 sdist/

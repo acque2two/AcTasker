@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="section" >
+  <div class="container" >
+    <div class="row" >
+      <div class="bg-inverse col-md-12 p-y-3" ><h1 class="display-1" >Oops... {{ title }}<br ></h1 >
+        <p class="" draggable="true" >{{ detail }}
+          <br >
+          {% for i in details %}
+          Reason: {{ details.title }} / {{ details.message }}
+          {% endfor %}
+        </p >
+      </div >
+    </div >
+  </div >
+</div >
+{% endblock %}
