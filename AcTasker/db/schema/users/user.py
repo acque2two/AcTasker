@@ -1,7 +1,7 @@
 from AcTasker.db.db import db
 
 
-class User(db.Document):
+class User(db.EmbeddedDocument):
     # Basic Information
     auth = db.ReferenceField("Auth")
 
