@@ -18,7 +18,7 @@ from AcTasker.web.web import web_root
 
 @web_root.route("/signup", methods=["GET"])
 def web_signup_get():
-    return render_template("signup.html", **{"is_login": False, "user": {"email": '', 'uid': '', 'password': ''}})
+    return render_template("auth/signup.html", **{"is_login": False, "user": {"email": '', 'uid': '', 'password': ''}})
 
 
 @web_root.route("/signup", methods=["POST"])
@@ -60,7 +60,7 @@ def web_signup_post():
     session["csrf_token"] = ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(64)])
 
     print(user)
-    return render_template("signup.html", **{
+    return render_template("auth/signup.html", **{
         "is_login":          False,
         "user":              user,
         'checked':           True,
