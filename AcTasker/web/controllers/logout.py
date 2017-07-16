@@ -4,8 +4,8 @@
 
 from flask import session, redirect
 
-from AcTasker.web import web_root
 from AcTasker.web.libs.auth import need_login
+from AcTasker.web.web import web_root
 
 
 @need_login(no_redirect=False)

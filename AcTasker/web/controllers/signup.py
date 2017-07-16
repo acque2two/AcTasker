@@ -12,8 +12,8 @@ from flask import render_template, request, session
 from AcTasker.db.schema.users.auth import Auth
 from AcTasker.db.schema.users.info import Info
 from AcTasker.db.schema.users.user import User
-from AcTasker.web import web_root
 from AcTasker.web.libs.error import Error
+from AcTasker.web.web import web_root
 
 
 @web_root.route("/signup", methods=["GET"])

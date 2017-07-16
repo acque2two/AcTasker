@@ -3,7 +3,7 @@
 
 from flask import render_template
 
-from AcTasker.web import web_root
+from AcTasker.web.web import web_root
 
 
 @web_root.route("/login", methods=["GET"])
