@@ -5,6 +5,9 @@
 
     <div class="form-group" >
       <label >Email Address</label >
+      {% if checked == True %}
+      <input name="email" value="{{ user.email }}" hidden />
+      {% endif %}
       <input
               name="email"
               type="email"
@@ -17,6 +20,9 @@
 
     <div class="form-group" >
       <label >User ID</label >
+      {% if checked == True %}
+      <input name="uid" value="{{ user.uid }}" hidden />
+      {% endif %}
       <input
               name="uid"
               type="text"
@@ -28,20 +34,68 @@
     </div >
 
     <div class="form-group" >
+      <label >名字</label >
+      {% if checked == True %}
+      <input name="last_name" value="{{ user.last_name }}" hidden />
+      {% endif %}
+      <input
+              name="last_name"
+              type="text"
+              class="form-control"
+              placeholder="Enter Last name"
+              value="{{ user.last_name }}"
+              {% if checked== True %} disabled {% endif %}
+      >
+    </div >
+
+    <div class="form-group" >
+      <label >名前</label >
+      {% if checked == True %}
+      <input name="first_name" value="{{ user.first_name }}" hidden />
+      {% endif %}
+      <input
+              name="first_name"
+              type="text"
+              class="form-control"
+              placeholder="Enter First name"
+              value="{{ user.first_name }}"
+              {% if checked== True %} disabled {% endif %}
+      >
+    </div >
+
+    <div class="form-group" >
+      <label >表示名</label >
+      {% if checked == True %}
+      <input name="display_name" value="{{ user.display_name }}" hidden />
+      {% endif %}
+      <input
+              name="display_name"
+              type="text"
+              class="form-control"
+              placeholder="Enter Display name"
+              value="{{ user.display_name }}"
+              {% if checked== True %} disabled {% endif %}
+      >
+    </div >
+
+    <div class="form-group" >
       <label >Password</label >
+      {% if checked == True %}
+      <input name="password" value="{{ user.password }}" hidden />
+      {% endif %}
       <input
               name="password"
               type="password"
               class="form-control"
               placeholder="Password"
-              value="{{ user.password }}"
+              value="{% if checked == True %}********{% endif %}"
               {% if checked== True %} disabled {% endif %}
       >
     </div >
     {% if checked == True %}
-    <input name="hash" value="{{ user.hash }}" hidden disabled />
-    <input name="csrf_token" value="{{ csrf_token }}" hidden disabled />
-    <input name="checked" value="OK" hidden disabled />
+    <input name="hash" value="{{ user.hash }}" hidden />
+    <input name="csrf_token" value="{{ csrf_token }}" hidden />
+    <input type="checkbox" name="checked" value=true checked hidden />
     {% endif %}
     <button type="submit" class="btn btn-primary" >Submit</button >
   </form >
