@@ -10,4 +10,4 @@ from AcTasker.web.web import web_root
 @web_root.route("/tasks/add", methods=["GET"])
 @need_login()
 def web_tasks_add_get():
-    return render_template("tasks/add.html", **{"is_login": False})
+    return render_template("tasks/add.html", **{"is_login": True})

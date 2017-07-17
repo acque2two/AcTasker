@@ -10,4 +10,4 @@ from AcTasker.web.web import web_root
 @web_root.route("/tasks/delete", methods=["GET"])
 @need_login()
 def web_tasks_delete_get():
-    return render_template("tasks/delete.html", **{"is_login": False})
+    return render_template("tasks/delete.html", **{"is_login": True})
