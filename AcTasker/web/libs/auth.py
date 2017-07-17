@@ -13,7 +13,9 @@ def need_login(no_redirect=False):
     def is_login(func):
         @wraps(func)
         def login(*args, **kwargs):
-            g.username = session.get("username")
+            g.username = session.get("username", None)
+            if g.username == None:
+                return redirect('/login')
             g.user = User.objects(auth__name=g.username)
             print(g.user)
             if session.get('secret_key') == hashlib.md5("%s%s%s" % (g.user.auth.salt, g.username, g.user.auth.salt)):
