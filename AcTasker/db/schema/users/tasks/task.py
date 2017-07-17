@@ -2,12 +2,12 @@
 from AcTasker.db.db import db
 
 
-class Task(db.EmbeddedDocument):
+class Task(db.Document):
 
     # Basic Information
     name = db.StringField()
     description = db.StringField()
-    tags = db.ListField(db.EmbeddedDocumentField("Tag"))
+    tags = db.ListField(db.ReferenceField("Tag"))
 
     start_date = db.DateTimeField()
     end_date = db.DateTimeField()

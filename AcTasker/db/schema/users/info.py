@@ -1,7 +1,7 @@
 from AcTasker.db.db import db
 
 
-class Info(db.EmbeddedDocument):
+class Info(db.Document):
     # Additional Information
     first_name = db.StringField()
     last_name = db.StringField()
