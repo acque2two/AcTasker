@@ -15,11 +15,12 @@ def need_login(no_redirect=False):
         def login(*args, **kwargs):
             g.username = session.get("username")
             g.user = User.objects(auth__name=g.username)
+            print(g.user)
             if session.get('secret_key') == hashlib.md5("%s%s%s" % (g.user.auth.salt, g.username, g.user.auth.salt)):
-                return func
+                return func(*args, **kwargs)
             else:
                 if no_redirect:
-                    return func
+                    return func(*args, **kwargs)
                 return redirect("/login")
 
         return login
