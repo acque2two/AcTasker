@@ -3,11 +3,11 @@ from AcTasker.db.db import db
 
 class User(db.Document):
     # Basic Information
-    auth = db.ReferenceField("Auth")
+    auth = db.EmbeddedDocumentField("Auth")
 
     # Additional Information
-    info = db.ReferenceField("Info")
-    setting = db.ReferenceField("Setting")
+    info = db.EmbeddedDocumentField("Info")
+    setting = db.ReferenceField("Setting", reverse_delete_rule=db.CASCADE)
     # Technical Information
     is_disable = db.BooleanField()
 
