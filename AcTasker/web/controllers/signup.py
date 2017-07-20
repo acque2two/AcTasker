@@ -47,7 +47,13 @@ def web_signup_post():
         user.created_date = datetime.datetime.now()
         user.save()
 
+        print([user.auth.name, user.auth.password])
+        print([request.form.get("uid"), request.form.get("password")])
+        print([session.get("uid"), session.get("password")])
+
         return render_template("auth/login.html", signup_success=True)
+    if len(request.form.get("password", '')) < 8:
+        return "error"
 
     user = {"email":        request.form.get("email", None), "uid": request.form.get("uid", None),
             "salt":         ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(48)]),
@@ -59,7 +65,7 @@ def web_signup_post():
     user["password"] = hashlib.sha512(
         (
             "%s:%s:%s" % (
-                user["salt"], request.form.get("password", None), user["salt"]
+                user["salt"], hashlib.md5(request.form.get("password", '').encode("UTF-8")).hexdigest(), user["salt"]
             )
         ).encode("UTF-8")
     ).hexdigest()

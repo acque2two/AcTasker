@@ -16,9 +16,10 @@ def need_login(no_redirect=False):
             g.username = session.get("username", None)
             if g.username == None:
                 return redirect('/login')
-            g.user = User.objects(auth__name=g.username)
+            g.user = User.objects.filter(auth__name=g.username).first()
             print(g.user)
-            if session.get('secret_key') == hashlib.md5("%s%s%s" % (g.user.auth.salt, g.username, g.user.auth.salt)):
+            if session.get('secret_key') == hashlib.md5(
+                    ("%s%s%s" % (g.user.auth.salt, g.username, g.user.auth.salt)).encode("UTF-8")).hexdigest():
                 return func(*args, **kwargs)
             else:
                 if no_redirect:

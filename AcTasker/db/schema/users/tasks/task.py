@@ -2,7 +2,7 @@
 from AcTasker.db.db import db
 
 
-class Task(db.Document):
+class Task(db.EmbeddedDocument):
 
     # Basic Information
     name = db.StringField()

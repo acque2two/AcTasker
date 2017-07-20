@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block base %}
+{% block body %}
 
 <div class="col-md-12" >
   <ul class="breadcrumb" draggable="true" >
@@ -11,66 +11,39 @@
     </li >
     <li class="breadcrumb-item active" >Data</li >
   </ul >
-  <h1 class="" >ようこそ xxxさん</h1 >
-  <ul class="nav nav-tabs" draggable="true" >
-    <li class="nav-item" >
-      <a href="#" class="active nav-link" >Home</a >
-    </li >
-    <li class="nav-item" >
-      <a class="nav-link" href="#" >Profile</a >
-    </li >
-    <li class="nav-item" >
-      <a href="#" class="nav-link" >Messages</a >
-    </li >
-  </ul >
-</div >
-<div class="col-md-12" >
-  <ul class="list-group" draggable="true" >
-    <li class="list-group-item" >Cras justo odio</li >
-    <li class="list-group-item" >Dapibus ac facilisis in
-      <span class="label label-default label-pill pull-right" >2</span >
-    </li >
-    <li class="list-group-item" >Morbi leo risus
-      <i class="fa fa-fw pull-right fa-check" ></i >
-    </li >
-    <li class="list-group-item" >Porta ac consectetur ac
-      <img src="http://v4.pingendo.com/assets/photos/apple/photo-1.jpg"
-           class="img-circle pull-right"
-           style="width:50px" >
-    </li >
-  </ul >
-  <div class="table-responsive" draggable="true" >
-    <table class="table" >
-      <thead >
-      <tr >
-        <th >#</th >
-        <th >First Name</th >
-        <th >Last Name</th >
-        <th >Username</th >
-      </tr >
-      </thead >
-      <tbody >
-      <tr >
-        <td >1</td >
-        <td >Mark</td >
-        <td >Otto</td >
-        <td >@mdo</td >
-      </tr >
-      <tr >
-        <td >2</td >
-        <td >Jacob</td >
-        <td >Thornton</td >
-        <td >@fat</td >
-      </tr >
-      <tr >
-        <td >3</td >
-        <td >Larry</td >
-        <td >the Bird</td >
-        <td >@twitter</td >
-      </tr >
-      </tbody >
-    </table >
+  <h1 class="" >ようこそ {{ user.info.display_name }}さん</h1 >
+  {% if user.tasks != [] %}
+  <div class="list-group" >
+    {% for i in user.tasks %}
+    <a href="#" class="list-group-item" >
+      <div class="container" >
+        <h4 class="list-group-item-heading" >タスク名</h4 >
+        <p class="" >
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 description" >タスク詳細
+          タスク詳細
+          タスク詳細
+          タスク詳細
+          タスク詳細
+          タスク詳細
+        </div >
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >タスク期日</div >
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >タスク優先度</div >
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >
+          <button type="button" class="btn btn-warning  btn-block"
+                  onclick="window.location=/tasks/{{ i.id }}" >編集
+          </button >
+        </div >
+        </p >
+      </div >
+    </a >
+    {% endfor %}
   </div >
+  {% else %}
+  <div class="alert alert-success" role="no-task" ><b >残っているタスクがありません!</b >
+    <button type="button" class="btn btn-success" >タスクが増えましたか？</button >
+  </div >
+  {% endif %}
+  <button type="button" class="btn btn-success btn-block" >タスクを追加する</button >
 </div >
 <div class="modal fade" draggable="true" >
   <div class="modal-dialog" >

@@ -15,4 +15,4 @@ class User(db.Document):
     created_date = db.DateTimeField()
 
     # Relational
-    tasks = db.ListField(db.ReferenceField("Tasks"))
+    tasks = db.EmbeddedDocumentListField("Tasks")

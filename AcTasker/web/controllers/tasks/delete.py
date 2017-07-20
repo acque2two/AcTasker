@@ -3,7 +3,7 @@
 
 from flask import render_template
 
-from AcTasker.web import need_login
+from AcTasker.web.libs.auth import need_login
 from AcTasker.web.web import web_root
 
 
