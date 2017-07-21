@@ -2,15 +2,6 @@
 {% block body %}
 
 <div class="col-md-12" >
-  <ul class="breadcrumb" draggable="true" >
-    <li class="breadcrumb-item" >
-      <a href="#" >Home</a >
-    </li >
-    <li class="breadcrumb-item" >
-      <a href="#" >Library</a >
-    </li >
-    <li class="breadcrumb-item active" >Data</li >
-  </ul >
   <h1 class="" >ようこそ {{ user.info.display_name }}さん</h1 >
   {% if user.tasks != [] %}
   <div class="list-group" >
@@ -40,10 +31,12 @@
   </div >
   {% else %}
   <div class="alert alert-success" role="no-task" ><b >残っているタスクがありません!</b >
-    <button type="button" class="btn btn-success" >タスクが増えましたか？</button >
+    <!--<button type="button" class="btn btn-success" >タスクが増えましたか？</button >-->
   </div >
   {% endif %}
-  <button type="button" class="btn btn-success btn-block" >タスクを追加する</button >
+  <button type="button" class="btn btn-success btn-block" onclick="document.location.href = '/tasks/add'"
+  >タスクを追加する
+  </button >
 </div >
 <div class="modal fade" draggable="true" >
   <div class="modal-dialog" >
