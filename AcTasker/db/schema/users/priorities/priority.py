@@ -1,7 +1,7 @@
 from AcTasker.db.db import db
 
 
-class Priority(db.Document):
+class Priority(db.EmbeddedDocument):
     # Basic Information
     name = db.StringField()
     description = db.StringField()

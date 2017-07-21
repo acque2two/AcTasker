@@ -1,7 +1,7 @@
 from AcTasker.db.db import db
 
 
-class Setting(db.Document):
+class Setting(db.EmbeddedDocument):
     # Basic Information
-    tags = db.ListField(db.ReferenceField("Tag"))
-    priorities = db.ListField(db.ReferenceField("Priority"))
+    tags = db.EmbeddedDocumentListField("Tag")
+    priorities = db.EmbeddedDocumentListField("Priority")

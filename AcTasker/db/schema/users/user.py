@@ -7,7 +7,7 @@ class User(db.Document):
 
     # Additional Information
     info = db.EmbeddedDocumentField("Info")
-    setting = db.ReferenceField("Setting", reverse_delete_rule=db.CASCADE)
+    setting = db.EmbeddedDocumentField("Setting")
     # Technical Information
     is_disable = db.BooleanField()
 

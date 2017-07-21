@@ -7,7 +7,7 @@ class Task(db.EmbeddedDocument):
     # Basic Information
     name = db.StringField()
     description = db.StringField()
-    tags = db.ListField(db.ReferenceField("Tag"))
+    tags = db.EmbeddedDocumentListField("Tag")
 
     start_date = db.DateTimeField()
     end_date = db.DateTimeField()
