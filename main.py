@@ -10,7 +10,7 @@ from config import CONFIG
 
 app = Flask(__name__)
 
-app.config.from_object('config.CONFIG.FLASK.' + 'DEVELOPMENT' if CONFIG.DEV else "PRODUCTION")
+app.config.from_object('config.CONFIG.FLASK.' + ('DEVELOPMENT' if CONFIG.DEV else "PRODUCTION"))
 
 if __name__ == '__main__':
 

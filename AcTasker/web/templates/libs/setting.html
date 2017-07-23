@@ -1,0 +1,23 @@
+{% extends base.html %}
+{% block base %}
+<div class="col-md-12" >
+  <form name="{{ form_name }}" id="{{ form_name }}" class="" draggable="true" method="post" >
+    {% block error %}
+    <div class="alert alert-success" role="alert" ><b >{% block i.message %}{% endblock %}</div >
+    {% endblock %}
+    {% block menu %}
+    <div class="form-group" >
+      <label >{{ menu.name }}</label >
+      <input name="{{ menu.id }}" type="{{ menu.type }}" class="form-control" placeholder="Enter {{ menu.name }}"
+             {% if checked %} disabled {% endif %} >
+      {% if checked %}
+      <input name="{{ menu.id }}" value="{{ menu.value }}" hidden />
+      {% endif %}
+    </div >
+    {% endblock %}
+    <button class="btn btn-primary" onclick="submit()" >Submit</button >
+  </form >
+  {% block footer %}{% endblock %}
+  {% endblock %}
+</div >
+{% endblock %}
