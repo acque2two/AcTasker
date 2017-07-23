@@ -12,6 +12,8 @@ from AcTasker.web.web import web_root
 
 @web_root.route("/login", methods=["GET"])
 def web_login_get():
+    if request.form.get("signup_success", False):
+        return render_template("auth/login.html", **{"is_login": False, "signup_success": True})
     return render_template("auth/login.html", **{"is_login": False})
 
 

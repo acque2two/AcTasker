@@ -7,7 +7,7 @@ import hashlib
 import random
 import string
 
-from flask import render_template, request, session
+from flask import render_template, request, session, redirect
 
 from AcTasker.db.schema import Setting
 from AcTasker.db.schema.users.auth import Auth
@@ -50,8 +50,8 @@ def web_signup_post():
         print([user.auth.name, user.auth.password])
         print([request.form.get("uid"), request.form.get("password")])
         print([session.get("uid"), session.get("password")])
+        return redirect("/login?signup_success=True")
 
-        return render_template("auth/login.html", signup_success=True)
     if len(request.form.get("password", '')) < 8:
         return "error"
 
