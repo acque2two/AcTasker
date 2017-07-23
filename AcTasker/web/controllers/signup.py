@@ -5,6 +5,7 @@
 import datetime
 import hashlib
 import random
+import re
 import string
 
 from flask import render_template, request, session, redirect
@@ -51,16 +52,40 @@ def web_signup_post():
         print([request.form.get("uid"), request.form.get("password")])
         print([session.get("uid"), session.get("password")])
         return redirect("/login?signup_success=True")
-
-    if len(request.form.get("password", '')) < 8:
-        return "error"
+    error = []
 
     user = {"email":        request.form.get("email", None), "uid": request.form.get("uid", None),
             "salt":         ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(48)]),
             "first_name":   request.form.get("first_name", None),
             "last_name":    request.form.get("last_name", None),
-            "display_name": request.form.get("display_name", None)
+            "display_name": request.form.get("display_name", None),
+            "password":     request.form.get("password", '')
             }
+
+    if len(user["password"]) < 8:
+        error.append("password_few")
+
+    lowcase = re.search(r"[a-z]", request.form.get('password', '')) is not None
+    upcase = re.search(r"[A-Z]", request.form.get('password', '')) is not None
+    digit = re.search(r"\d", request.form.get("password", '')) is not None
+
+    if not (lowcase and upcase and digit):
+        error.append("password_weak")
+
+    if len(User.objects(auth__email=user["email"]).all()) > 0:
+        error.append("email_exist")
+
+    if len(User.objects(auth__name=user["uid"]).all()) > 0:
+        error.append("uid_exist")
+
+    if len(error) > 0:
+        user["password"] = ""
+        return render_template("auth/signup.html", **{
+            "is_login": False,
+            "user":     user,
+            'checked':  False,
+            'error':    error
+        })
 
     user["password"] = hashlib.sha512(
         (

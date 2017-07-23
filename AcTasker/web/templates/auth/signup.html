@@ -8,6 +8,9 @@
       {% if checked == True %}
       <input name="email" value="{{ user.email }}" hidden />
       {% endif %}
+      {% if "email_exist" in error %}
+      <div class="alert alert-danger" role="alert" ><b >エラー</b > そのメールアドレスは使用されています</div >
+      {% endif %}
       <input
               name="email"
               type="email"
@@ -22,6 +25,9 @@
       <label >User ID</label >
       {% if checked == True %}
       <input name="uid" value="{{ user.uid }}" hidden />
+      {% endif %}
+      {% if "uid_exist" in error %}
+      <div class="alert alert-danger" role="alert" ><b >エラー</b > そのUser IDは使用されています</div >
       {% endif %}
       <input
               name="uid"
@@ -80,8 +86,15 @@
 
     <div class="form-group" >
       <label >Password</label >
+      パスワードには大文字英字・小文字英字・数値を最低一つづつ使用した8文字以上の文字列である必要があります。
       {% if checked == True %}
       <input name="password" value="{{ user.password }}" hidden />
+      {% endif %}
+      {% if "password_few" in error %}
+      <div class="alert alert-danger" role="alert" ><b >エラー</b > パスワードは8文字以上である必要があります</div >
+      {% endif %}
+      {% if "password_weak" in error %}
+      <div class="alert alert-danger" role="alert" ><b >エラー</b > パスワードには大文字英字・小文字英字・数値を最低一つづつ使用する必要があります</div >
       {% endif %}
       <input
               name="password"
