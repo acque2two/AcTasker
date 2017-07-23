@@ -7,7 +7,7 @@ from AcTasker.web.libs.auth import need_login
 from AcTasker.web.web import web_root
 
 
-@web_root.route("/setting/priorities", methods=["GET"])
+@web_root.route("/settings/priorities", methods=["GET"])
 @need_login(no_redirect=False)
 def web_setting_priorities_get():
     return render_template("settings/priorities.html", **{"is_login": True, "user": g.user})

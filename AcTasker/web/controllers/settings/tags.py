@@ -7,7 +7,7 @@ from AcTasker.web.libs.auth import need_login
 from AcTasker.web.web import web_root
 
 
-@web_root.route("/setting/tags", methods=["GET"])
+@web_root.route("/settings/tags", methods=["GET"])
 @need_login(no_redirect=False)
 def web_setting_tags_get():
     return render_template("settings/tags.html", **{"is_login": True, "user": g.user})
