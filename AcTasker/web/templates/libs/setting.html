@@ -1,5 +1,6 @@
 {% extends base.html %}
 {% block base %}
+{% block form %}
 <div class="col-md-12" >
   <form name="{{ form_name }}" id="{{ form_name }}" class="" draggable="true" method="post" >
     {% block error %}
@@ -20,4 +21,5 @@
   {% block footer %}{% endblock %}
   {% endblock %}
 </div >
+{% endblock %}
 {% endblock %}
