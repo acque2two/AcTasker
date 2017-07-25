@@ -7,6 +7,7 @@
     <div class="alert alert-success" role="alert" ><b >{% block i.message %}{% endblock %}</div >
     {% endblock %}
     {% block menu %}
+    {% block menu_once %}
     <div class="form-group" >
       <label >{{ menu.name }}</label >
       <input name="{{ menu.id }}" type="{{ menu.type }}" class="form-control" placeholder="Enter {{ menu.name }}"
@@ -15,6 +16,7 @@
       <input name="{{ menu.id }}" value="{{ menu.value }}" hidden />
       {% endif %}
     </div >
+    {% endblock %}
     {% endblock %}
     <button class="btn btn-primary" onclick="submit()" >Submit</button >
   </form >

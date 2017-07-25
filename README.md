@@ -30,6 +30,7 @@ Original Task management tool on Web
 * Rustでバックエンドを再実装
     * もともと中途半端なRust実装をPython実装に落とし込み直してる
         * 実装は簡単だが低速
+* Multi language
 
 # 希望
 * FireBaseをバックエンドにできるようにしたい
