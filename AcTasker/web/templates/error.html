@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block base %}
 
-      <div class="bg-inverse col-md-12 p-y-3" ><h1 class="display-1" >Oops... {{ title }}<br ></h1 >
-        <p class="" draggable="true" >{{ detail }}
-          <br >
-          {% for i in details %}
-          Reason: {{ details.title }} / {{ details.message }}
-          {% endfor %}
-        </p >
-      </div >
+<div class="bg-inverse col-md-12 p-y-3" ><h1 class="display-1" >Oops... {{ title }}<br ></h1 >
+  <p class="" draggable="true" >{{ detail }}
+    <br >
+    {% for i in details %}
+    Reason: {{ details.title }} / {{ details.message }}
+    {% endfor %}
+  </p >
+</div >
 {% endblock %}

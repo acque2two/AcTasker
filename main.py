@@ -14,7 +14,6 @@ app.config.from_object('config.CONFIG.FLASK.' + ('DEVELOPMENT' if CONFIG.DEV els
 
 if __name__ == '__main__':
 
-
     @app.route('/check', methods=["GET"])
     def get_check():
         return jsonify({"status": "ok"})

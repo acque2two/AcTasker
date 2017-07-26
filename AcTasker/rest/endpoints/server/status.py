@@ -23,6 +23,3 @@ class Status(Resource):
                 'percentage': (((st.f_blocks - st.f_bfree) * st.f_frsize) / 1024) / ((st.f_blocks * st.f_frsize) / 1024)
             }
         })
-
-
-

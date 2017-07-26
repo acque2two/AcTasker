@@ -1,9 +1,7 @@
-
 from AcTasker.db.db import db
 
 
 class Task(db.EmbeddedDocument):
-
     # Basic Information
     name = db.StringField()
     description = db.StringField()
@@ -15,5 +13,3 @@ class Task(db.EmbeddedDocument):
     # Tracking
     created_date = db.DateTimeField()
     updated_date = db.DateTimeField()
-
-
