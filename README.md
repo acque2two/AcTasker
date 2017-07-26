@@ -1,16 +1,50 @@
 # AcTasker
 Original Task management tool on Web 
+タスクの優先度等をユーザが設定した情報を基に自動で判断し、**最もリスクの低い**タスク処理順番を提案します.
+
 
 
 # 現状
+
+## 機能
+### 実装済み
+* タスク追加機能
+    * タスク優先度をタグで指定可能
+* タグ管理機能
+
+### 未実装
+* 優先度と最終期日/n段階期日を基にした優先度の算出
+    * 期日入力スキーマの定義忘れ -> 延期
+    * 優先度計算用計算式が浮かばなかった -> 将来実装
+* RESTサーバ
+    * テストがしにくいので作業順を変更済み( REST -> WEB から WEB -> REST へ )
+* 複数タグ選択機能
+* そもそも全体的に操作しづらい
+    * UI再考予定
+* タスク削除機能
+    * MongoEngine扱いにくい・・・デバッグも地味に大変・・・
+        * なぜPyMongoにしなかったのか
+            * そもそもなぜMongoDBにしたのか
+* priorityスキーマ未使用
+    * 実装未定(廃止予定)
+* ユーザ間共有機能
+* SNS共有
+* WebSocket等を用いたスマートフォン通知
+    * 実装未定(実装方法再検討)
+* そもそも優先度は複数条件ごとに複数指定出来るようにする予定だった
+    * 将来実装
+
+
 ## 動作環境
 * Python + MongoDB
     * RDBよりドキュメント志向DBの方が実装が容易でストレージの無駄が少ないと考えた
         * RDBほどの堅牢性が不要で検索機能もSQLが必要なほどではない
     * MongoDBを触ってみたかった
     * 本来のRust実装だと時間が足りない
-* HTML + ごくわずかなJavaScript + BootStrap ( w/ Pingendo )
+* HTML + ごくわずかなJavaScript + BootStrap 4
     * コストを最小限に抑えたかった
+    * デバッグに係る時間が最小限で済む(使い慣れてる)
+
 
 ## 使用ライブラリ
 * Flask
@@ -19,7 +53,6 @@ Original Task management tool on Web
 * MongoEngine
     * MongoDBの操作に使用
     * PyMongoより柔軟性が低く、固定されたスキーマを扱うのに有利？・IDEでの補完が出やすい
-
 
 
 # 展望
@@ -31,10 +64,11 @@ Original Task management tool on Web
     * もともと中途半端なRust実装をPython実装に落とし込み直してる
         * 実装は簡単だが低速
 * Multi language
+    * I want to use English.
 
 # 希望
 * FireBaseをバックエンドにできるようにしたい
     * React NativeでAndroidアプリ化・通知の有効化
     * Realtime Databaseでバックグラウンド処理の最適化
     * Firebase Functionで処理の煩雑さの低減
-    * もはやサーバプログラムが不要に！
+    * もはやサーバプログラムが不要に

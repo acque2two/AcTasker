@@ -33,7 +33,7 @@ def web_tasks_add_get():
         {
             "name":        "タグ",
             "description": "タスクにつけるタグを選択してください",
-            "id":          "task",
+            "id":          "tag",
             "type":        "dropdown",
             "val":         [i.name for i in g.user.setting.tags]
         }
@@ -87,10 +87,10 @@ def web_tasks_add_post():
         {
             "name":        "タグ",
             "description": "タスクにつけるタグを選択してください",
-            "id":          "task",
+            "id":          "tag",
             "type":        "dropdown",
             "val":         [i.name for i in g.user.tasks],
-            "value":       request.form.get("priority")
+            "value":       request.form.get("tag")
         }
     ]
 

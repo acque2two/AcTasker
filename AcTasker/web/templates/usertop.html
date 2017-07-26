@@ -5,26 +5,36 @@
   <h1 class="" >ようこそ {{ user.info.display_name }}さん</h1 >
   {% if user.tasks != [] %}
   <div class="list-group" >
-    {% for i in user.tasks %}
-    <a href="#" class="list-group-item" >
+
+    <a class="list-group-item" >
       <div class="container" >
-        <h4 class="list-group-item-heading" >タスク名</h4 >
-        <p class="" >
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 description" >タスク詳細
-          タスク詳細
-          タスク詳細
-          タスク詳細
-          タスク詳細
-          タスク詳細
+        <div class="row" >
+          <h4 class="list-group-item-heading" >タスク名</h4 >
         </div >
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >タスク期日</div >
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >タスク優先度</div >
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >
-          <button type="button" class="btn btn-warning  btn-block"
-                  onclick="window.location=/tasks/{{ i.id }}" >編集
-          </button >
+        <div class="row" >
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 description" >タスク説明</div >
+          <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >タグ名</div >
+          <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >優先度</div >
+          <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >操作系</div >
         </div >
-        </p >
+      </div >
+    </a >
+    {% for i in user.tasks %}
+    <a class="list-group-item" >
+      <div class="container" >
+        <div class="row" >
+          <h4 class="list-group-item-heading" >{{ i.name }}</h4 >
+        </div >
+        <div class="row" >
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 description" >{{ i.description }}</div >
+          <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >{{ i.tag.name }}</div >
+          <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >{{ i.tag.priority }}</div >
+          <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6" >
+            <button type="button" class="btn btn-warning  btn-block"
+                    onclick="window.location=/tasks/{{ i.id }}" >編集
+            </button >
+          </div >
+        </div >
       </div >
     </a >
     {% endfor %}
