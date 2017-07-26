@@ -1,0 +1,46 @@
+{
+  "auth": {
+    "email": "example@example.com",
+    "name": "acq",
+    "password": "128 chars, SHA512 Hash",
+    "salt": "48 chars Randomized",
+    "updated_date": {
+      "$date": 1500631419172
+    }
+  },
+  "info": {
+    "first_name": "太郎",
+    "last_name": "Example",
+    "display_name": "Exam-Taro"
+  },
+  "setting": {
+    "tags": [
+      {
+        "name": "tag-name",
+        "description": "tag-description",
+        "priority": 200
+      }
+    ],
+    "priorities": []
+  },
+  "created_date": {
+    "$date": 1500631421463
+  },
+  "tasks": [
+    {
+      "name": "hoge",
+      "description": "fuga"
+    },
+    {
+      "name": "\\u30bf\\u30b9\\u30af-A",
+      "description": "\\u30bf\\u30b9\\u30afA\\u306e\\u8aac\\u660e \\u30bf\\u30b9\\u30afA\\u306e\\u8aac\\u660e \\u30bf\\u30b9\\u30afA\\u306e\\u8aac\\u660e \\u30bf\\u30b9\\u30afA\\u306e\\u8aac\\u660e \\u30bf\\u30b9\\u30afA\\u306e\\u8aac\\u660e ",
+      "tag": {
+        "name": "tag-name",
+        "description": "tag-description",
+        "priority": 200
+      }
+    }
+  ]
+}'
+]
+}
