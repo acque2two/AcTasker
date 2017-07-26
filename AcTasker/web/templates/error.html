@@ -1,9 +1,6 @@
 {% extends "base.html" %}
-{% block body %}
+{% block base %}
 
-<div class="section" >
-  <div class="container" >
-    <div class="row" >
       <div class="bg-inverse col-md-12 p-y-3" ><h1 class="display-1" >Oops... {{ title }}<br ></h1 >
         <p class="" draggable="true" >{{ detail }}
           <br >
@@ -12,7 +9,4 @@
           {% endfor %}
         </p >
       </div >
-    </div >
-  </div >
-</div >
 {% endblock %}

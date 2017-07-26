@@ -1,25 +1,56 @@
-{% extends base.html %}
-{% block base %}
+{% extends "base.html" %}
+{% block body %}
 <div class="col-md-12" >
   <form name="task" id="task" class="" draggable="true" method="post" >
-    {% block error %}
-    <div class="alert alert-success" role="alert" ><b >{% block i.message %}{% endblock %}</div >
-    {% endblock %}
-    {% block menu %}
-    {% block menu_once %}
+    {% for menu in menus %}
+
+    {% if menu.error != None %}
+    {% for i in menu.error %}
+    <div class="alert alert-success" role="alert" ><b >{{ i.message }}</b ></div >
+    {% endfor %}
+    {% endif %}
+
     <div class="form-group" >
       <label >{{ menu.name }}</label >
+      {{ menu.description }}
+      {% if menu.type == "dropdown" %}
+      <div class="dropdown" >
+        <button class="btn btn-default dropdown-toggle"
+                type="button"
+                id="dropdownMenu1"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="true" >
+          Dropdown
+          <span class="caret" ></span >
+        </button >
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+          <li ><a onclick="document.getElementsByName('{{ menu.id }}')[0].value=''" >Select...</a ></li >
+
+          <li role="separator" class="divider" ></li >
+          {% for i in menu.val %}
+          <li ><a onclick="document.getElementsByName('{{ menu.id }}')[0].value='{{ i }}'" >{{ i }}</a ></li >
+          {% endfor %}
+        </ul >
+        <input name="{{ menu.id }}" value="{{ menu.value }}" hidden />
+      </div >
+
+      {% else %}
       <input name="{{ menu.id }}" type="{{ menu.type }}" class="form-control" placeholder="Enter {{ menu.name }}"
-             {% if checked %} disabled {% endif %} >
+             {% if checked %} disabled {% endif %} value="{{ menu.value }}" >
+      {% endif %}
       {% if checked %}
       <input name="{{ menu.id }}" value="{{ menu.value }}" hidden />
       {% endif %}
+
     </div >
-    {% endblock %}
-    {% endblock %}
+    {% endfor %}
     <button class="btn btn-primary" onclick="submit()" >Submit</button >
+
+    {% if checked == True %}
+    <input name="csrf_token" value="{{ csrf_token }}" hidden />
+    <input type="checkbox" name="checked" checked hidden />
+    {% endif %}
   </form >
-  {% block footer %}{% endblock %}
-  {% endblock %}
 </div >
 {% endblock %}

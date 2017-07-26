@@ -3,24 +3,25 @@
 <head >
   <meta charset="utf-8" >
   <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous" >
   <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css"
         rel="stylesheet"
         type="text/css" >
-  <link href="http://v4.pingendo.com/assets/bootstrap/themes/purple.css" rel="stylesheet" type="text/css" >
   <title >{% block title %}{% endblock %} - AcTasker</title >
 </head >
 
 <body >
-<nav class="bg-faded bg-success navbar navbar-fixed-top navbar-full navbar-light" >
-  <a class="navbar-brand text-inverse" href="#" >AcTasker</a >
-  <ul class="nav navbar-nav pull-right" >
-
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-success" >
+  <a class="navbar-brand text-inverse mr-auto" href="/" >AcTasker</a >
+  <ul class="navbar-nav" >
 
     {% if is_login == True %}
     <li class="nav-item" >
-      <a class="nav-link" href="/setting" >
+      <a class="nav-link" href="/settings" >
         Setting
-        <br >
       </a >
     </li >
     {% endif %}
@@ -29,23 +30,21 @@
 
       <a class="nav-link" href="/login" >
         Login
-        <br >
       </a >
       {% else %}
 
       <a class="nav-link" href="/logout" >
         Logout
-        <br >
       </a >
       {% endif %}
     </li >
   </ul >
 </nav >
-<div style="margin-top: 52px" >
+<div >
 
   {% block base %}
 
-  <div style="padding-top: 32px" >
+  <div style="padding: 90px 0px" >
     <div class="section" >
       <div class="container" >
         <div class="row" >
@@ -58,9 +57,15 @@
   {% endblock %}
 </div >
 
-
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script >
-<script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js" ></script >
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous" ></script >
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous" ></script >
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous" ></script >
 {% block js %}
 {% endblock %}
 
